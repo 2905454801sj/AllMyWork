@@ -1,0 +1,38 @@
+package com.jason.thread2.Observer;
+
+public abstract class ObserverRunnable implements Runnable{
+    final protected LifeCycleListener listener;
+    public ObserverRunnable(final LifeCycleListener listener){
+        this.listener=listener;
+    }
+    protected void notifyChange(final RunnableEvent runnableEvent){
+        listener.onEvent(runnableEvent);
+    }
+
+    public enum RunnableState{
+        RUNNING,ERROR,DONE;
+    }
+    public static class RunnableEvent{
+        private final RunnableState state;
+        private final Thread thread;
+        private final Throwable cause;
+
+        public RunnableEvent(RunnableState state, Thread thread, Throwable cause) {
+            this.state = state;
+            this.thread = thread;
+            this.cause = cause;
+        }
+
+        public RunnableState getState() {
+            return state;
+        }
+
+        public Thread getThread() {
+            return thread;
+        }
+
+        public Throwable getCause() {
+            return cause;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+   
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+   <!-- <property>用于进行属性输入，name：bean的属性名，通过setter方法获得 
+   							   ref：另一个bean的id值的引用-->
+   
+   <!-- 创建service -->
+   <bean id="bookServiceID" class="com.a.IoC.BookServiceImpl">
+   <property name="bookDao" ref="bookDaoID"></property>
+   </bean> 
+   <!-- 创建bookdao -->
+   <bean id="bookDaoID" class="com.a.IoC.BookDaoImpl"></bean> 
+  
+ 
+
+</beans> 

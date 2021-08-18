@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+</div>
+<div id="app1">
+    {{aaa}}
+    <br>
+    <button type="button" @click="showvue">点我</button>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var v1 = new Vue({
+        el: '#app',
+        data: {
+            title:'vue'
+        }
+    })
+    var data={
+        aaa:"??????????"
+    }
+    var v2=new Vue({
+        el:'#app1',
+        data:data,
+        methods:{
+            showvue:function (){
+                console.log(v1.title);
+            }
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{title}}
+    <br>
+    <button @click="toUpCase" type="button">点我</button>
+    <br>
+    {{toLowerCase}}
+</div>
+<div id="app1">
+    <button type="button" @click="change">点我</button>
+    <button type="button" @click="v1toUpCase">调用</button>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var v1 = new Vue({
+        el: '#app',
+        data: {
+            title: 'hello!'
+        },
+        methods: {
+            toUpCase: function () {
+                this.title = this.title.toUpperCase();
+            }
+        },
+        computed: {
+            toLowerCase: function () {
+                return this.title.toLowerCase()
+            }
+        },
+        watch: {
+            title: function (n, o) {
+                console.log(n + ":" + o);
+            }
+        }
+    });
+    var v2=new Vue({
+        el:'#app1',
+        methods: {
+            change:function (){
+                v1.title="jason";
+            },
+            v1toUpCase:function (){
+                v1.toUpCase();
+            }
+        }
+    });
+</script>
+</html>

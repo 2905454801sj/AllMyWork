@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="value in people" :key="i">{{value}}</li>
+    </ul>
+      <br>
+      <ul>
+          <li v-for="(k,v,i) in people">{{v}}+{{k}}+{{i}}</li>
+      </ul>
+      <br>
+      <ul>
+          <li v-for="p in people">
+              <span v-for="(k,v,i) in p">{{k}}+{{v}}+{{i}}</span>
+          </li>
+      </ul>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  new Vue({
+    el:'#app',
+    data:{
+      arg:[1,2,3,4,5,6,7,8,9],
+        people: [
+            {name:'jason',
+            age:10},
+            {
+                name:"ss",
+                age: 11
+            },
+            {
+                name:"sasas",
+                age: 55
+            }
+        ]
+    }
+  });
+</script>
+</html>

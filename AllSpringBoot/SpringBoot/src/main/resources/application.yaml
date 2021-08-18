@@ -1,0 +1,12 @@
+spring:
+  messages:
+    basename: International.index
+
+  thymeleaf:
+    cache: false
+  mvc:
+    format:
+      date: yyyy-MM-dd
+
+
+

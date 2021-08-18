@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="SSM" />
+        <module name="SBV1" />
+        <module name="SpringBoot" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SBV1" target="11" />
+      <module name="SpringBoot" target="1.7" />
+      <module name="SSM" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="SBV1" options="-parameters" />
+      <module name="SSM" options="-parameters" />
+      <module name="SpringBoot" options="-parameters" />
+    </option>
+  </component>
+</project>

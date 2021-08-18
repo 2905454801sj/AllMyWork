@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                        http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+
+	<!-- DataSource -->
+	<bean id="dataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="jdbcUrl"
+			value="jdbc:mysql://localhost:3306/Spring?serverTimezone=UTC"></property>
+		<property name="user" value="root"></property>
+		<property name="password" value="123456"></property>
+	</bean>
+	<!-- DAO -->
+	<bean id="accountDao"
+		class="com.example3.zhuanzhang.AccountDaoImpl3">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- Service -->
+	<bean id="accountService"
+		class="com.example3.zhuanzhang.AccountServiceImpl3">
+		<property name="accountDao" ref="accountDao"></property>
+	</bean>
+	<!-- Service代理类 -->
+	<bean id="proxyAccountService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="proxyInterfaces"
+			value="com.example3.zhuanzhang.AccountService3"></property>
+		<property name="target" ref="accountService"></property>
+		<property name="transactionManager" ref="txManager"></property>
+		<property name="transactionAttributes">
+			<props>
+				<!-- key 确定哪些方法使用当前事物，text 用于配置事物详情 -->
+				<prop key="transfer"></prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 配置事务管理器，管理器需要事物，事物从connection获得，connection从DataSource获得 -->
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+</beans> 

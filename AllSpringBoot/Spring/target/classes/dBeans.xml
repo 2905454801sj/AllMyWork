@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans       xmlns="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- scope中参数，singleton为单例，默认值
+					prototype为多例，每执行一次就获得一个实例 -->
+     <bean id="bookserviceID" class="com.d.Scope.BookServiceImpl3" scope="prototype"></bean>
+</beans>  

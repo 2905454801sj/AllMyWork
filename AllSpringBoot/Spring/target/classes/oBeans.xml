@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                        http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+    <!-- 创建目标类 -->
+	<bean id="userID" class="com.o.AutoProxy.UserServiceImpl2"></bean>
+	<!-- 创建切面类 -->
+	<bean id="myaspectID" class="com.o.AutoProxy.MyAsepct2"></bean>
+	<!-- AOP编程
+	     使用aop：config进行配置 
+	     aop:pointcut从目标对象上获得具体的方法
+	     aop:advisor特殊的切面，只有一个通知和一个切入点
+	     	advice-ref通知的引用
+	     	pointcut-ref切入点引用-->
+	<aop:config>
+	  <aop:pointcut expression="execution(* com.o.AutoProxy.*.*(..))" id="mypointcut"/>
+	  <aop:advisor advice-ref="myaspectID" pointcut-ref="mypointcut"/>
+	</aop:config>
+</beans>  

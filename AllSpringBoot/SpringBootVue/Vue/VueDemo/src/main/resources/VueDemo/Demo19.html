@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+      <table>
+          <tr>
+              <th>工作</th>
+              <th>工人</th>
+          </tr>
+          <tr v-for="(work,i) in works" :key="i">
+              <td>{{i+1}}</td>
+              <td v-for="value in work">{{value}}</td>
+          </tr>
+      </table>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  new Vue({
+    el:'#app',
+    data:{
+      works:[
+          {
+              job:'clean',
+              worker:'jason'
+          },
+          {
+              job:'wash',
+              worker:'u'
+          }
+      ]
+    }
+  });
+</script>
+</html>

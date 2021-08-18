@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        {{getTime()}}
+        <br>
+        {{getTime1}}
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var v1=new Vue({
+        el:'#app',
+        methods:{
+            getTime:function (){
+                return new Date();
+            }
+        },
+        computed:{
+            getTime1:function (){
+                return new Date();
+            }
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                        http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+    <!-- 创建目标类 -->
+	<bean id="userid" class="com.p.AspectXML.UserServiceImpl3"></bean>
+	<!-- 创建切面类 -->
+	<bean id="myaspectid" class="com.p.AspectXML.MyAspect3"></bean>
+	<!-- AOP编程 
+	aop:aspect声明称切面，从而获得通知，ref：切面类的引用
+	aop:pointcut expression 声明一个切入点表达式，id引用名称
+	-->
+	<aop:config>
+		<aop:aspect ref="myaspectid">
+			<aop:pointcut expression="execution(* com.p.AspectXML.UserServiceImpl3.*(..))"  id="mypointcutid" />
+			<!-- 前置通知 
+			method,方法名
+			pointcut，切入点表达式，此表达式仅用于当前通知
+			pointcut-ref，切入点引用，可与其他通知共享切入点
+			通知方法可以有参数，例如before(joinpoint)
+			参数1：org.aspectj.lang.joinpoint  用于描述连接点（目标方法），获得目标方法名等
+			-->
+			<aop:before method="Before" pointcut-ref="mypointcutid"/>
+			<!-- 后置通知 
+			目标方法后执行，可以获得返回值
+			returning 通知方法第二个参数的名称
+			参数1：连接点描述
+			参数2：类型Object，参数名由returning配置
+			-->
+			<aop:after-returning method="AfterReturning" pointcut-ref="mypointcutid" returning="object"/>
+			<!-- 环绕通知 
+			返回值类型必须是object，方法名任意，参数必须是org.aspectj.lang.ProceedingJoinPoint
+			抛出异常
+			执行目标方法，Object object=point.proceed();
+			-->
+			<aop:around method="Around" pointcut-ref="mypointcutid"/>
+			<!-- 抛出异常通知 
+			throwing 	确定通知方法的第二个参数名称throwing=""设置
+			参数1：连接点描述对象
+			参数2：获得异常信息的，必须是throwable，参数名由
+			-->
+			<aop:after-throwing method="AfterThrowing" pointcut-ref="mypointcutid" throwing="e"/>
+			<!-- 最终通知
+			
+			 -->
+			 <aop:after method="After" pointcut-ref="mypointcutid" />
+		</aop:aspect>
+	</aop:config>
+</beans> 

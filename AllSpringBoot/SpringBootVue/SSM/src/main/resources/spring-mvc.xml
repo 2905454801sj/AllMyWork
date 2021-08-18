@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <mvc:cors>
+        <mvc:mapping path="localhost:8090/**"
+                     allowed-origins="http://domain1.com, http://domain2.com"
+                     allowed-methods="GET, POST, PUT, HEAD, PATCH, DELETE, OPTIONS, TRACE"
+                     allowed-headers="header1, header2, header3"
+                     exposed-headers="header1, header2"
+                     allow-credentials="false"
+                     max-age="72000" />
+        <mvc:mapping path="/resources/**"
+                     allowed-origins="http://domain3.com" />
+    </mvc:cors>
+</beans>

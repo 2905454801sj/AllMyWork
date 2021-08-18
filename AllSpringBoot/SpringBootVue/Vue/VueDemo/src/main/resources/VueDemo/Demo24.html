@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <hello1></hello1>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    Vue.component("hello1", {
+        template: "<div>{{title}}<br><button type='button' @click='btnf'>点我</button> </div>",
+        data: function () {
+            return {title: '<><><>'}
+        },
+        methods: {
+            btnf: function () {
+                alert("hello");
+            }
+        }
+    })
+    var v1 = new Vue({
+        el: '#app',
+
+    })
+</script>
+</html>

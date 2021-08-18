@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+  <p v-once>
+    {{link}}
+  </p>
+    <input type="text" v-model="link">
+    <br>
+    <strong v-html="mylink"></strong>
+    <strong v-text="mylink"></strong>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  new Vue({
+    el:'#app',
+    data:{
+      link:'http://www.baidu.com',
+      mylink:'<a href="http://www.bing.com">必应</a>'
+    }
+  });
+</script>
+</html>

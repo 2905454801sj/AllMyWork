@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>success!!!!!</h1>
+    <!--若将该文件不经过springboot模板打开，直接已静态文件的形式打开,则只会显示div标签内内容-->
+    <div th:text="${hello}">欢迎你！！！</div>
+    <hr/>
+    <!--utext会解析html-->
+    <div th:utext="${hello}"></div>
+    <br>
+    <br>
+    <h4 th:text="${user}" th:each="user:${users}"></h4>
+    <hr/>
+    <h4>
+        <span th:each="user:${users}"> [[${user}]] </span>
+    </h4>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <button type="button" ref="btn1" @click="show1">1</button>
+    <button type="button" ref="btn2" @click="show1">2</button>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  new Vue({
+    el:"#app",
+    data:{},
+    methods:{
+      show1:function (){
+        this.$refs.btn1.innerHTML="hello"
+      }
+    }
+  });
+</script>
+</html>

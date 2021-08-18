@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- 集合注入就是给properties添加子标签
+	 数组: <array> 
+	List： <list> 
+	Set：<set>
+    Map： <map> 
+	Properties：<props>  <prop key="">值<prop>
+	
+	普通数据：value 
+	引用数据：ref -->
+	<bean id="collID" class="com.i.Collection.CollData">
+		<property name="a1">
+			<array>
+				<value>今天</value>
+				<value>学习</value>
+				<value>了吗</value>
+			</array>
+		</property>
+		<property name="l1">
+		    <list>
+		        <value>今天</value>
+				<value>吃饭</value>
+				<value>了吗</value>
+		    </list>
+		</property>
+		<property name="s1">
+		    <set>
+		        <value>今天</value>
+				<value>睡觉</value>
+				<value>了吗</value>
+		    </set>
+		</property>
+		<property name="m1">
+		    <map>
+		        <entry key="12" value="21"></entry>
+		        <entry key="34" value="43"></entry>
+		        <entry key="56" value="65"></entry>
+		    </map>
+		</property>
+		<property name="p1">
+		    <props>
+		        <prop key="你好">孙杰</prop>
+		        <prop key="嘿嘿">哈哈</prop>
+		        <prop key="12">34</prop>
+		    </props>
+		</property>
+	</bean>
+</beans>  

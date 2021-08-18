@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                        http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+    <!-- 创建数据源 C3P0-->
+    <bean id="dataSourceid" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    	<property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
+    	<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/Spring?serverTimezone=UTC"></property>
+    	<property name="user" value="root"></property>
+    	<property name="password" value="123456"></property>
+    </bean>             
+    <!-- 创建模板,需要注入数据源 -->  
+    <bean id="jdbcTemplateid" class="org.springframework.jdbc.core.JdbcTemplate">
+    	<property name="dataSource" ref="dataSourceid"></property>
+    </bean>                
+    <!-- 配置DAO -->                    
+    <bean id="UserID" class="com.s.C3P0.UserDAO">
+    	<property name="jdbcTemplate"   ref="jdbcTemplateid"></property>
+    </bean>
+</beans> 

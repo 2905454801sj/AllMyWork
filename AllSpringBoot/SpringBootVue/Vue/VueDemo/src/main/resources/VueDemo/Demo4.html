@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+      请输入姓名：<input type="text" v-model="name"/><br>
+      姓名：{{name}}<br>
+      请输入专业：<input type="text" v-on:input="setMajor">
+      <button type="button"   v-on:input="setMajor">你试试</button>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  new Vue({
+    el:'#app',
+    data:{
+        try:"你试试",
+        name:'',
+        major:'java'
+    },
+    methods:{
+        sayHello:function (){
+            document.writeln("hello");
+        },
+        setMajor:function (event){
+            console.log(event.target.value)
+        }
+    }
+  });
+</script>
+</html>

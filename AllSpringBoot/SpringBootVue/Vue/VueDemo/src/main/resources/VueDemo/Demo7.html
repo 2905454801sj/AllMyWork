@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    {{count>10?'大于10':'小于10'}}<br>
+    {{count}}
+    <button type="button" @click="addbtn(2)">增加</button>
+    <button type="button" @click="drebtn(2)">减少</button>
+    <br>
+    <input type="text" v-model="mystep">
+    <br>
+    <p v-on:mousemove="mymo">
+      今天晴天
+      {{x}}
+      {{y}}
+      <br>
+      <strong @mousemove="mystop">停止</strong>
+    </p>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  new Vue({
+    el:'#app',
+    data:{
+      count:0,
+      mystep:null,
+      x:0,
+      y:0
+    },
+    methods:{
+      addbtn:function(step){
+        this.count+=Number(mystep);
+      },
+      drebtn:function (step){
+        this.count-=mystep+0;
+      },
+      mymo:function (event){
+        this.x=event.clientX;
+        this.y=event.clientY;
+      },
+      mystop:function (event){
+        event.stopPropagation()
+      }
+    }
+  });
+</script>
+</html>

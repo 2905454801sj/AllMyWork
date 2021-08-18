@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans       xmlns="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans    
+                    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+ 				
+ 				<!-- setter方法注入
+ 				普通数据：name="",value=""
+ 				引用数据：name="",ref=""
+ 				-->
+ 				<bean id="personID" class="com.h.Setter.Person">
+ 				  <property name="name" value="孙杰"></property>
+ 				  <property name="age"  value="666"></property>				
+ 				  <property name="homeAddr"  ref="homeAddrID"></property>
+ 				  <property name="companyAddr">
+ 				  <ref bean="companyAddrID"></ref>
+ 				  </property>
+ 				</bean>
+
+                <bean id="homeAddrID"   class="com.h.Setter.Address">
+                  <property name="addr"  value="江苏"></property>
+                  <property name="tel"   value="110"></property>
+				</bean>
+				<bean id="companyAddrID"  class="com.h.Setter.Address">
+                  <property name="addr"  value="浙江"></property>
+                  <property name="tel"  value="911"></property>
+				</bean>
+</beans>  
